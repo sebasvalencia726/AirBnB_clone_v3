@@ -24,4 +24,15 @@ function showAmenities (array) {
 
 $(document).ready(function() {
   $('DIV.amenities .popover UL LI input').on('change', checked);
+
+  $.get("http://localhost:5001/api/v1/status/", function(data)
+	{
+    console.log(data.status);
+    if (data.status === 'OK') {
+      $('#api_status').removeClass();
+      $('#api_status').toggleClass('available')
+    } else {
+      $('#api_status').removeClass();
+    }
+	});
 });
